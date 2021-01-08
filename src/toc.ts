@@ -370,6 +370,7 @@ export function buildToc(doc: TextDocument): IHeading[] {
         //// Transform setext headings to ATX headings
         if (
             i < arr.length - 1
+            && !lineText.trim().startsWith('#') //// #879
             && lineText.match(/^ {0,3}\S.*$/)
             && lineText.replace(/[ -]/g, '').length > 0  //// #629
             && arr[i + 1].match(/^ {0,3}(=+|-{2,}) *$/)
